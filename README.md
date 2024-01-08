@@ -16,3 +16,12 @@ To fetch the data from backend do append to the url to `/api/activities/home`
 
 Used Docker-complose file to run frontend and backend docker at the same time.
 
+## Security of Docker container
+To find vaneribility on docker container file, images and open source code you can use Snyk services https://snyk.io. Snyk has free and paid planes. 
+
+You can intigrate your git hub or cli with Snyk and find vanarabilities in your project. Its alwasy as good idea.
+
+hashicorp vault is alternative to aws secrets. It can store secrets and run on AWS EC2 for providing secrets. It is capable to rotate the secrets so that you donet have to store your secrets on docker files or images 
+
+AWS Inspector can inspect for container images and EC2 instance images for vaneribilities. 
+
