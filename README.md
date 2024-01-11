@@ -25,3 +25,7 @@ hashicorp vault is alternative to aws secrets. It can store secrets and run on A
 
 AWS Inspector can inspect for container images and EC2 instance images for vaneribilities. 
 
+### App modefication
+
+Added notification on backend and front end. Created respective file in flask and JS. It worked well.
+
