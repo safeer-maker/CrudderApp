@@ -1,3 +1,4 @@
 /backend-flask/services/__pycache__/
 backend-flask/__pycache__/
 snyk.exe
+/docker/*
