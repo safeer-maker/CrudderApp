@@ -1,14 +1,17 @@
 from datetime import datetime, timedelta, timezone
 from opentelemetry import trace
+from aws_xray_sdk.core import xray_recorder
 
 tracer = trace.get_tracer("home.activities")
 
 class HomeActivities:
   def run():
-    with tracer.start_as_current_span ("home-activities-mock-data"):
+    # Xray sagment creation
+    with xray_recorder.in_segment_async('segment_name') as segment:
+    #with tracer.start_as_current_span ("home-activities-mock-data"):
       now = datetime.now(timezone.utc).astimezone()
-      span = trace.get_current_span()
-      span.set_attribute("app.now", now.isoformat())
+      #span = trace.get_current_span()
+      #span.set_attribute("app.now", now.isoformat())
       results = [{
         'uuid': '68f126b0-1ceb-4a33-88be-d90fa7109eee',
         'handle':  'Safeer',
@@ -48,4 +51,5 @@ class HomeActivities:
         'replies': []
       }
       ]
-      return results
+    segment.put_metadata('home.activities', 'temp-data')
+    return results
