@@ -22,6 +22,13 @@ from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExport
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 
+#---------------
+from opentelemetry import trace
+tracer = trace.get_tracer("app.py")
+with tracer.start_as_current_span ("home-activities-mock-data"):
+  span = trace.get_current_span()
+  span.set_attribute("app.py.now", "Testing spain")
+
 # HoneyComb
 provider = TracerProvider()
 processor = BatchSpanProcessor(OTLPSpanExporter())
