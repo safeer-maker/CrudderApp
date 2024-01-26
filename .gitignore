@@ -2,3 +2,4 @@
 backend-flask/__pycache__/
 snyk.exe
 /docker/*
+.env

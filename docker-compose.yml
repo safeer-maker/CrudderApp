@@ -26,6 +26,10 @@ services:
       #REACT_APP_BACKEND_URL: "https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
       #REACT_APP_BACKEND_URL: "https://3tgcw56f-4567.inc1.devtunnels.ms"
       REACT_APP_BACKEND_URL: "http://127.0.0.1:4567"
+      REACT_AWS_PROJECT_REGION : "${AWS_DEFAULT_REGION}"
+      REACT_APP_AWS_COGNITO_REGION : "${AWS_DEFAULT_REGION}"
+      REACT_APP_AWS_USER_POOLS_ID : "us-east-1_bJGR0eJXI"
+      REACT_APP_CLIENT_ID : "4bfm7kle1ou249mje5peihu4k2"
 
     build: ./frontend-react-js
     ports:
@@ -33,16 +37,16 @@ services:
     volumes:
       - ./frontend-react-js:/frontend-react-js
 
-  xray-daemon:
-    image: "amazon/aws-xray-daemon"
-    environment:
-      AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
-      AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
-      AWS_REGION: "us-east-1"
-    command:
-      - "xray -o -b xray-daemon:2000"
-    ports:
-      - 2000:2000/udp
+  # xray-daemon:
+  #   image: "amazon/aws-xray-daemon"
+  #   environment:
+  #     AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
+  #     AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
+  #     AWS_REGION: "us-east-1"
+  #   command:
+  #     - "xray -o -b xray-daemon:2000"
+  #   ports:
+  #     - 2000:2000/udp
 
   # db:
   #   image: postgres:13-alpine
